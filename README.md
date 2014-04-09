@@ -7,34 +7,54 @@ Media Temple Capistrano deployment
 - config.php & .htaccess are stored in a 'shared' folder remotely and are symlinked into the current release folder
 - Environments are set in /deploy/ - dev.rb for development and prd.rb for production (multiple environments can be added)
 
+Dependencies
+---------------
+Install Ruby dependencies using Bundler (required for Capistrano to run):
+
+```sh
+$ bundle install
+```
+
+Terminal Commands
+---------------
+
+Sets up local config files (asks for local development URL): 
 ```sh
 $ bundle exec cap site:setup_local
 ```
-Sets up local config files (asks for local development URL)
+---------------
 
-
+Sets up remote config files:
 ```sh
 $ bundle exec cap dev/prd site:setup
 ```
-Sets up remote config files
 
+---------------
+
+For deploying from development branch to development URL:
 ```sh
 $ bundle exec cap dev deploy
 ```
-For deploying from development branch to development URL
 
+---------------
+
+For deploying from production branch to production URL:
 ```sh
 $ bundle exec cap prd deploy
 ```
-For deploying from production branch to production URL
 
+---------------
+
+Pulls database from remote to local (overriding the local database):
 ```sh
 $ bundle exec cap dev/prd db:pull
 ```
-Pulls database from remote to local (overriding the local database)
 
+---------------
+
+Pulls database from local to remote (overridng the remote database):
 ```sh
 $ bundle exec cap dev/prd db:push
 ```
-Pulls database from local to remote (overridng the remote database)
+
 
