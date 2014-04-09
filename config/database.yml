@@ -1,0 +1,24 @@
+dev:
+  urlpath: /
+  port: 3306
+  database: 
+  username:
+  password:
+  host: internal-db.s{{ Media Temple account number }}.gridserver.com
+  emailhost:
+prd:
+  urlpath: /
+  port: 3306
+  database: 
+  username:
+  password: 
+  host: internal-db.s{{ Media Temple account number }}.gridserver.com
+  emailhost: 
+local:
+  urlpath: /PROJECT/htdocs/
+  port: 8888
+  database: 
+  username: 
+  password: 
+  host:
+  emailhost: 
