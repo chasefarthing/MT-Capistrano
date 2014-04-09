@@ -2,10 +2,11 @@ Media Temple Capistrano deployment
 =============
 
 - Built upon https://github.com/Mixd/wp-deploy & https://gist.github.com/paulredmond/6208367
-- Used by Connectd.io
-- Creates a config.php & a .htaccess file locally and remotely
-- config.php & .htaccess are stored in a 'shared' folder remotely and are symlinked into the current release folder
-- Environments are set in /deploy/ - dev.rb for development and prd.rb for production (multiple environments can be added)
+- Used by http://connnectd.io
+- Creates a `config.php` & a `.htaccess` file locally and remotely
+- config.php & .htaccess are stored in a `shared/` folder remotely and are symlinked into the current release folder (`html/`)
+- Environments are set in `deploy/` - dev.rb for development and prd.rb for production (multiple environments can be added)
+- Past releases are located in `releases/` (on remote)
 
 Dependencies
 ---------------
