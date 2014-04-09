@@ -2,7 +2,7 @@
 # Setup Server
 ############################################
 
-set :application, "connectd.io"
+set :application, "{{ Production site URL }}"
 server "#{host}", :app
 
 ############################################

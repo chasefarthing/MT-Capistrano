@@ -2,11 +2,11 @@
 # Setup Server
 ############################################
 
-set :application, "dev.connectd.io" # typically the same as the domain
+set :application, "{{ Development site URL }}" 
 server "#{host}", :app
 
 ############################################
 # Setup Git
 ############################################
 
-set :branch, "development"
+set :branch, "development" # development site branch

@@ -13,7 +13,7 @@ require 'yaml'
 
 set :stages, %w(prd dev)
 set :default_stage, "dev"
-set :keep_releases, 2
+set :keep_releases, 2 # Amount of release folders to be stored remotely (to roll back to if needs be)
 
 after "deploy", "deploy:cleanup"
 
@@ -22,16 +22,16 @@ after "deploy", "deploy:cleanup"
 # Setup Site
 ############################################
 
-set :site, "156312" # this is your site number, https://kb.mediatemple.net/questions/268/What+is+my+site+number%3F#gs
-set(:host) { "s156312.gridserver.com" }
-set(:domain) { "s156312.gridserver.com" }
+set :site, "{{ Media Temple account number }}" # https://kb.mediatemple.net/questions/268/What+is+my+site+number%3F#gs
+set(:host) { "s{{ Media Temple account number }}.gridserver.com" }
+set(:domain) { "s{{ Media Temple account number }}gridserver.com" }
 set(:user) { "connectd.io" }
 
 ############################################
 # Setup Git
 ############################################
 
-set :repository, "git@github.com:jshjohnson/Connectd.git"
+set :repository, "git@github.com:{{username}}/{{project}}.git"
 set :scm, :git
 set(:git_enable_submodules, true)
 set :deploy_via, :remote_cache
@@ -45,7 +45,7 @@ set :use_sudo, false
 ssh_options[:forward_agent] = true
 
 # Path stuff, make sure to symlink html to ./current
-set(:deploy_to) { "/home/156312/domains/#{application}" }
+set(:deploy_to) { "/home/{{ Media Temple account number }}/domains/#{application}" }
 set :current_dir, "html"
 
 # we need a relative path for the current symlink, without this
