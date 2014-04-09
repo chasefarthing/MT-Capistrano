@@ -137,16 +137,9 @@ namespace :db do
         set :backup_file, "#{shared_path}/db_backups/#{backup_time}.sql"
     end
 
-    desc "Takes a database dump from remote server"
-    task :dump do
-        backup_name
-        puts "Dumping remote database..."
-        database = YAML::load_file('config/database.yml')[stage.to_s]
-        run "mysqldump --add-drop-table -h #{database['host']} -u #{database['username']} -p#{database['password']} #{database['database']} > #{backup_file}"
-    end
 
     desc "Syncs remote database to local database"
-    task :sync_to_local do
+    task :pull do
         backup_name
         dump
         puts "Downloading remote backup..."
@@ -161,7 +154,7 @@ namespace :db do
     end
 
     desc "Syncs local database to remote database"
-    task :sync_to_remote do
+    task :push do
         backup_name
         puts "Dumping local database..."
         database = YAML::load_file('config/database.yml')['local']
@@ -205,8 +198,7 @@ task :confirm do
   end
 end
  
-before 'db:sync_to_remote', :confirm
-before 'production', :confirm
+before 'db:push', :confirm
 
 
 
